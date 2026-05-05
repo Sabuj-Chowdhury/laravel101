@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnotherPostController;
+use App\Http\Controllers\Api\V1\NewPostController;
 use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,4 +22,15 @@ Route::get('/hello', function () {
 // Route::get('/posts/{id}', [PostController::class, 'show'])->name('post.show');
 
 
-Route::apiResource('posts-new', AnotherPostController::class);
+
+
+// api endpoint supporting versioning EXAMPLE : v1 prefix with group
+// Route::prefix('v1')->group(function () {
+//     Route::apiResource('posts-new', AnotherPostController::class);
+// });
+
+// controller made under api/v1 folder 
+
+Route::prefix('v1')->group(function () {
+    Route::apiResource('hello', NewPostController::class);
+});
