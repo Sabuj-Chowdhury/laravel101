@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnotherPostController;
 use App\Http\Controllers\Api\V1\NewPostController;
+use App\Http\Controllers\Api\V2\Postcontroller as V2Postcontroller;
 use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -33,4 +34,9 @@ Route::get('/hello', function () {
 
 Route::prefix('v1')->group(function () {
     Route::apiResource('hello', NewPostController::class);
+});
+
+
+Route::prefix('v2')->group(function(){
+    Route::apiResource('posts',V2Postcontroller::class)
 });
