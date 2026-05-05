@@ -48,7 +48,13 @@ class NewPostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        // validation with rules
+        $data = $request->validate([
+            "title" => ["required", "string", "min:2"]
+        ]);
+
+        return $data;
     }
 
     /**
