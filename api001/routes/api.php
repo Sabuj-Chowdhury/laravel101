@@ -37,6 +37,6 @@ Route::prefix('v1')->group(function () {
 });
 
 
-Route::prefix('v2')->group(function(){
-    Route::apiResource('posts',V2Postcontroller::class)
-});
+// Route::prefix('v2')->group(function () {
+//     Route::apiResource('posts', V2Postcontroller::class);
+// });

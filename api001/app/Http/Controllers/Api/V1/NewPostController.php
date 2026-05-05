@@ -12,7 +12,15 @@ class NewPostController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(
+            [
+                "mssage" => "fetched successfully",
+                "data" => [
+                    "id" => 1,
+                    "title" => "something"
+                ]
+            ]
+        )->setStatusCode(200);
     }
 
     /**
@@ -20,7 +28,11 @@ class NewPostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //how to get the request 
+        // $data = $request->all();
+        // take only information need by keys
+        $data = $request->only('title', 'body');
+        return $data;
     }
 
     /**
