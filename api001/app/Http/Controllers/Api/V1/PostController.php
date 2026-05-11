@@ -12,7 +12,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return [];
     }
 
     /**
@@ -28,7 +28,15 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return response()->json([
+            'message' => 'test message',
+            'data' => [
+                "id" => 1,
+                "title" => "Test",
+                "body" => "post body"
+            ]
+
+        ]);
     }
 
     /**
