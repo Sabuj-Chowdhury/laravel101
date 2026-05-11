@@ -12,7 +12,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        return [];
+        return [
+            [
+                'id' => 1,
+                'title' => 'index title',
+                'body' => 'index body'
+            ]
+        ];
     }
 
     /**
@@ -26,19 +32,19 @@ class PostController extends Controller
 
         // only() method for only selected property from the body
         // $data = $request->only('title');
-        return $data;
+        // return $data;
 
 
 
         //    TEST purpose
-        // return response()->json([
-        //     'message' => 'store method',
-        //     'data' => [
-        //         'id' => 2,
-        //         'title' => 'test2',
-        //         'body' => 'store body'
-        //     ]
-        // ], 201);
+        return response()->json([
+            'message' => 'store method',
+            'data' => [
+                'id' => 2,
+                'title' => $data['title'],
+                'body' => $data['body']
+            ]
+        ], 201);
         // ->setStatusCode(201);
     }
 
@@ -50,7 +56,6 @@ class PostController extends Controller
         return response()->json([
             'message' => 'test message',
             'data' => [
-                "id" => 1,
                 "title" => "Test",
                 "body" => "post body"
             ]
@@ -63,7 +68,12 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required|string|min:2', //1st type of validation rule
+            'body' => ['required', 'string', 'min:2'] //2nd type of validation rule
+        ]);
+
+        return $data;
     }
 
     /**
@@ -71,6 +81,6 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return response()->noContent();
     }
 }
