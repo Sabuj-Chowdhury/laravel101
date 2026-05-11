@@ -20,7 +20,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return response()->json([
+            'message' => 'store method',
+            'data' => [
+                'id' => 2,
+                'title' => 'test2',
+                'body' => 'store body'
+            ]
+        ], 201);
+        // ->setStatusCode(201);
     }
 
     /**
