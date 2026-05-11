@@ -28,7 +28,7 @@ class PostController extends Controller
             'body' => 'required|min:2|string'
         ]);
 
-        // just to simulate
+        // just to simulate from user table
         $data['author_id'] = 1;
 
         // creating the post in the database
@@ -90,14 +90,16 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Post $post)
     {
         $data = $request->validate([
             'title' => 'required|string|min:2', //1st type of validation rule
             'body' => ['required', 'string', 'min:2'] //2nd type of validation rule
         ]);
 
-        return $data;
+        $post->update($data);
+
+        return $post;
     }
 
     /**
