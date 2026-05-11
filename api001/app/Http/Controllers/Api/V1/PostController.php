@@ -20,14 +20,25 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        return response()->json([
-            'message' => 'store method',
-            'data' => [
-                'id' => 2,
-                'title' => 'test2',
-                'body' => 'store body'
-            ]
-        ], 201);
+        // all() method from the request for all property in the request body
+        $data = $request->all();
+
+
+        // only() method for only selected property from the body
+        // $data = $request->only('title');
+        return $data;
+
+
+
+        //    TEST purpose
+        // return response()->json([
+        //     'message' => 'store method',
+        //     'data' => [
+        //         'id' => 2,
+        //         'title' => 'test2',
+        //         'body' => 'store body'
+        //     ]
+        // ], 201);
         // ->setStatusCode(201);
     }
 
