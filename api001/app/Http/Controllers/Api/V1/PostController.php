@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -26,8 +27,27 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // vallidation
+        $data = $request->validate([
+            'title' => 'required|min:2|string',
+            'body' => 'required|min:2|string'
+        ]);
+
+        // just to simulate
+        $data['author_id'] = 1;
+
+        // creating the post in the database
+        $post = Post::create($data);
+
+        // send response
+        return response()->json($post, 201);
+
+
+
+
+
         // all() method from the request for all property in the request body
-        $data = $request->all();
+        // $data = $request->all();
 
 
         // only() method for only selected property from the body
@@ -37,14 +57,14 @@ class PostController extends Controller
 
 
         //    TEST purpose
-        return response()->json([
-            'message' => 'store method',
-            'data' => [
-                'id' => 2,
-                'title' => $data['title'],
-                'body' => $data['body']
-            ]
-        ], 201);
+        // return response()->json([
+        //     'message' => 'store method',
+        //     'data' => [
+        //         'id' => 2,
+        //         'title' => $data['title'],
+        //         'body' => $data['body']
+        //     ]
+        // ], 201);
         // ->setStatusCode(201);
     }
 
