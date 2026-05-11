@@ -13,13 +13,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return [
-            [
-                'id' => 1,
-                'title' => 'index title',
-                'body' => 'index body'
-            ]
-        ];
+        // all the post for all the users
+        return Post::all();
     }
 
     /**
@@ -73,14 +68,23 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        return response()->json([
-            'message' => 'test message',
-            'data' => [
-                "title" => "Test",
-                "body" => "post body"
-            ]
+        // select the post 
+        $post = Post::findOrFail($id);
 
-        ]);
+        return $post;
+
+
+
+
+
+        // return response()->json([
+        //     'message' => 'test message',
+        //     'data' => [
+        //         "title" => "Test",
+        //         "body" => "post body"
+        //     ]
+
+        // ]);
     }
 
     /**

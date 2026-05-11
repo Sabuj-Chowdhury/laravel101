@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('body');
             // ways to add forieng key
-            $table->foreignIdFor(User::class, 'author_id');
+            $table->foreignIdFor(User::class, 'author_id')->constrained();
             // ways to add forieng key
             // $table->foreignId('author_id')->references('users')->cascadeOnDelete();
             $table->timestamps();
