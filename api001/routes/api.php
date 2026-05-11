@@ -7,14 +7,17 @@ use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+// default route created
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-
+//just a test route
 Route::get('/hello', function () {
     return ["message" => "hello laravel!"];
 });
+
+
 
 // Route::get('/posts', [PostController::class, 'index'])->name('post.index');
 
@@ -32,9 +35,9 @@ Route::get('/hello', function () {
 
 // controller made under api/v1 folder 
 
-Route::prefix('v1')->group(function () {
-    Route::apiResource('hello', NewPostController::class);
-});
+// Route::prefix('v1')->group(function () {
+//     Route::apiResource('hello', NewPostController::class);
+// });
 
 
 // Route::prefix('v2')->group(function () {
